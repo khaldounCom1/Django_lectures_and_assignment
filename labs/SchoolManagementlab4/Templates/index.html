@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block pageTitle %}
+ <div class="welcome-box2">Students Managements</div>
+{% endblock %}
+
+
+    <h1>Hello For All Students</h1>
+    <h3>Your Name {{fname | default:'almosanif'}}</h3>
+    <h3>Your Name {{fname | upper}}</h3>
+    <h3>Your Name {{fname | lower}}</h3>
+    <h3>Your Name {{fname | capfirst}}</h3>
+    <h3>Your Name {{fname | length}}</h3>
+    <h3>Your Name {{fname | slice:2}}</h3>
+    <h3>Your Name {{fname | add:'almosanif'}}</h3>
+{% endblock %}

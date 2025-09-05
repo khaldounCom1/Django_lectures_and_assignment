@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* عشان المحتوى ياخذ المساحة ويبقى الفوتر تحت */
+.main-content {
+    flex: 1;
+}
+
+.site-footer {
+    background-color: cadetblue;
+    text-align: center;
+    padding: 10px;
+}

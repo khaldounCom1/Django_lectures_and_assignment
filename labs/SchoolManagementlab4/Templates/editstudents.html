@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <h1>Edit Students</h1>
+    <!-- if -->
+     <h3>if</h3>
+     {% if total > 250 %}
+     <p>Ex</p>
+     {% endif %}
+     
+     <h3> if and else</h3>
+     <!-- if else -->
+      {% if total > 250 %}
+      <p>Ex</p>
+      {% else %}
+      <p>Good</p>
+      {% endif %}
+
+      <h3> if, elif and else</h3>
+      <!-- if else -->
+       {% if total > 250 %}
+       <p>Ex</p>
+       {% elif total < 250 and total > 200 %}
+       <p>Very Good</p>
+       {% else %}
+       <p>Gooood</p>
+       {% endif %}
+
+       <h3> For Loop</h3>
+       <ul>
+        {% for sub,mark in marks.items %}
+        <li>{{sub}} : {{mark}}</li>
+        {% endfor %}
+       </ul>
+       <a href="{% url 'home' %}">Back</a>
+
+       
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="welcome-box2"></div>
+    <h1 class="border border-primary m-5 p-5">Edit Student</h1>
+
+    <form method="post" action="{% url 'student:edit' student.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom1" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="validationCustom1" 
+                   name="f_name" value="{{ student.f_name }}" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="validationCustom2" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="validationCustom2" 
+                   name="l_name" value="{{ student.l_name }}" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="validationDefault3" class="form-label">Age</label>
+            <input type="number" class="form-control" id="validationDefault3" 
+                   name="age" value="{{ student.age }}" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="level" class="form-label">Level</label>
+            <select class="form-select" id="level" name="level" required>
+                <option value="1st" {% if student.level == "1st" %}selected{% endif %}>1st</option>
+                <option value="2nd" {% if student.level == "2nd" %}selected{% endif %}>2nd</option>
+                <option value="3rd" {% if student.level == "3rd" %}selected{% endif %}>3rd</option>
+                <option value="4th" {% if student.level == "4th" %}selected{% endif %}>4th</option>
+                <option value="5th" {% if student.level == "5th" %}selected{% endif %}>5th</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="gpa" class="form-label">GPA</label>
+            <input type="number" step="0.01" min="0" max="100" 
+                   class="form-control" id="gpa" name="gpa" 
+                   value="{{ student.gpa }}" required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Status</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" 
+                       name="status" id="status1" value="True"
+                       {% if student.status or student.status is None %}checked{% endif %}>
+                <label class="form-check-label" for="status1">Active</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" 
+                       name="status" id="status2" value="False"
+                       {% if student.status == False %}checked{% endif %}>
+                <label class="form-check-label" for="status2">Inactive</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Report</span>
+            <textarea class="form-control" name="report" aria-label="With textarea">{{ student.report }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary m-2">Submit</button>
+    </form>
+{% endblock %}

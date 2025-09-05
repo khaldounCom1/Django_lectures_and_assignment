@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>School Website h</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body dir="rtl">
+    <!-- Navigation -->
+     <nav>
+        <img src="{% static 'images/USILogo.png'%}" alt="USI Logo" width=50 height=50>
+     </nav>
+     <ul>
+        <li><a href="{% url 'main' %}">الرئيسية</a></li>
+        <li><a href="{% url 'patients_index' %}">المعلمين</a></li>
+        <li><a href="{% url 'student:allStudents' %}">الطلاب</a></li>
+        <li><a href="{% url 'student:newStudent' %}">اضافة طالب</a></li>
+    </ul>
+    
+</body>
+<style>
+    /* إزالة النقاط من القائمة */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* يجعلها أفقية */
+    gap: 20px; /* مسافة بين الروابط */
+    background-color: #2c3e50; /* خلفية داكنة للهيدر */
+}
+
+/* تنسيق الروابط */
+ul li a {
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+    color: white; /* لون النص */
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* تغيير اللون عند تمرير الماوس */
+ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+</style>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block pageTitle %}
+ <div class="welcome-box2">قائمة الطلاب</div>
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="d-flex justify-content-start gap-2" style="margin: 10px;">
+            <a href="{% url 'student:students' %}?q=True" class="btn btn-sm btn-primary">منتظم</a>
+            <a href="{% url 'student:students' %}?q=False" class="btn btn-sm btn-warning">غير منتظم</a>
+            <a href="{% url 'student:students' %}?q=all" class="btn btn-sm btn-success">الجميع</a>
+        </div>
+    </div>
+    
+</div>
+<!-- Main Content -->
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>الاسم الاول</th>
+                <th>الاسم الاخير</th>
+                <th>العمر</th>
+                <th>المرحلة الجامعية</th>
+                <th>المعدل</th>
+                <th>منتظم</th>
+                <th>ملاحظة</th>
+                <th>تحكم</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in Students %}
+                {% if student.status == False %}
+                    <tr style="background-color:pink;">
+                        <td>{{ student.f_name }}</td>
+                        <td>{{ student.l_name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.level }}</td>
+                        <td>{{ student.gpa }}</td>
+                        <td>{{ student.status }}</td>
+                        <td>{{ student.report }}</td>
+                        <td>
+                            <a href="{% url 'student:edit' student.id %}" class="fas fa-edit">تعديل</a>
+                            <a href="{% url 'student:delete' student.id %}" class="text-danger"><i class="fas fa-trash-alt"></i>حذف</a>
+                            <a href="{% url 'student:student_one' student.id %}" class="text-warning">عرض</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>{{ student.f_name }}</td>
+                        <td>{{ student.l_name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.level }}</td>
+                        <td>{{ student.gpa }}</td>
+                        <td>{{ student.status }}</td>
+                        <td>{{ student.report }}</td>
+                        <td>
+                            <a href="{% url 'student:edit' student.id %}" class="fas fa-edit">تعديل</a>
+                            <a href="{% url 'student:delete' student.id %}" class="text-danger"><i class="fas fa-trash-alt"></i>حذف</a>
+                            <a href="{% url 'student:student_one' student.id %}" class="text-warning">عرض</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">المجموع</td>
+                <td colspan="5">{{ Students_count }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</main>
+
+{% endblock %}
